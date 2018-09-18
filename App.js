@@ -19,7 +19,18 @@ import getImageForWeather from './utils/getImageForWeather';
 
 
 export default class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      location : 'Dhaka',
+    };
+  }
+  updateNewLocationHandler = (location) => {
+    this.setState({location});
+  };
   render() {
+    //const location = "Dhaka";
+    const {location} = this.state;
     return (
       <View style={styles.container} behavior="padding">
         <ImageBackground
@@ -28,10 +39,10 @@ export default class App extends Component {
           style={styles.imageContainer}
         >
           <Text style={[styles.textStyle, styles.smallText, {color: '#666'}]}>Weather Updates</Text>
-          <SearchInput place="Enter City" />
+          <SearchInput place="Enter City"  onSubmit={this.updateNewLocationHandler} />
           <View style={styles.detailsContainer}>
             <Text style={[styles.textStyle, styles.largeText]}> 
-              Dhaka
+              {location}
             </Text>
             <Text style={[styles.textStyle, styles.smallText]}>
               Clear
