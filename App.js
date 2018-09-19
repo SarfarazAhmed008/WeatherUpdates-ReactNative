@@ -97,7 +97,7 @@ export default class App extends Component {
                       {`${Math.round(temperature)}°`}
                     </Text>                 
                     <Text style={[styles.textStyle, styles.smallText]}>
-                      Max: {`${Math.round(minTemp)}°`}, Min: {`${Math.round(maxTemp)}°`}
+                      Max: {`${Math.round(maxTemp)}°`}, Min: {`${Math.round(minTemp)}°`}
                     </Text>    
                     <Text style={[styles.textStyle, styles.smallText]}>
                       Humidity: {humidity}%
