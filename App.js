@@ -73,7 +73,7 @@ export default class App extends Component {
           imageStyle={styles.styleImage}
           style={styles.imageContainer}
         >
-          <Text style={[styles.textStyle, styles.smallText, {color: '#fff'}]}>Weather Updates</Text>
+          <Text style={[styles.textStyle, styles.smallText, {color: '#fff'}]}>SA Weather Updates</Text>
           <SearchInput place="Enter City"  onSubmit={this.updateNewLocationHandler} />
           <View style={styles.detailsContainer}>
             <ActivityIndicator animating={loading} size="large" color="#0000ff" />
