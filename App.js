@@ -29,10 +29,10 @@ export default class App extends Component {
       error : false,
       location : '',
       weather : '',
-      temperature : 0,
       minTemp: 0,
       maxTemp: 0,
-      humidity: 0.0,
+      temperature : 0,
+      humidity: 0,
     };
   }
   componentDidMount(){
@@ -43,15 +43,15 @@ export default class App extends Component {
     this.setState({loading: true}, async () => {
       try{
         const locationId = await fetchLocationId(city);
-        const {location, weather, temperature, minTemp, maxTemp, humidity, } = await fetchWeather(locationId);
+        const {location, weather, minTemp, maxTemp, temperature, humidity, } = await fetchWeather(locationId);
         this.setState({
           loading : false,
           error: false,
           location,
           weather,
-          temperature,
           minTemp,
           maxTemp,
+          temperature,
           humidity,         
         });
       }catch (e){
@@ -64,7 +64,7 @@ export default class App extends Component {
   };
   render() {
     //const location = "Dhaka";
-    const { location, weather, temperature, loading, error, minTemp, maxTemp, humidity } = this.state;
+    const { location, weather, loading, error, minTemp, maxTemp, temperature, humidity } = this.state;
     return (
       <View style={styles.container}> 
         <StatusBar barStyle="light-content" />
@@ -97,7 +97,7 @@ export default class App extends Component {
                       {`${Math.round(temperature)}°`}
                     </Text>                 
                     <Text style={[styles.textStyle, styles.smallText]}>
-                      Max: {`${Math.round(maxTemp)}°`}, Min: {`${Math.round(minTemp)}°`}
+                      Min: {`${Math.round(minTemp)}°`}, Max: {`${Math.round(maxTemp)}°`}
                     </Text>    
                     <Text style={[styles.textStyle, styles.smallText]}>
                       Humidity: {humidity}%
